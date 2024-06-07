@@ -19,7 +19,7 @@ export default {
     res.json({ success: true, plan });
   },
   planSubscribe: async (req: Request, res: Response) => {
-    const { plan_id, user_id, valid_upto } = req.params;
+    const { plan_id, user_id, valid_upto } = req.body;
     const userPlanCheck = await UserPlan.findOneBy({ user_id, plan_id });
     if (userPlanCheck) {
       res.json({ success: false, msg: "User plan already subscribed" });
